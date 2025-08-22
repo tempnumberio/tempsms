@@ -1,21 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Free Temp SMS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Temporary Numbers - OTP Receiver</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f6fa;
+      color: #2f3640;
+    }
+    header {
+      background: #273c75;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #0097e6;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #40739e;
+    }
+    .number-box {
+      margin: 20px 0;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      background: #dcdde1;
+      border-radius: 6px;
+    }
+    .messages {
+      margin-top: 20px;
+    }
+    .message {
+      padding: 10px;
+      border-bottom: 1px solid #dcdde1;
+    }
+    .message:last-child {
+      border-bottom: none;
+    }
+  </style>
 </head>
 <body>
-  <h1>📱 Free Temporary SMS Numbers</h1>
-  <p>نیچے والے بٹن پر کلک کریں اور مفت OTP دیکھیں 👇</p>
+  <header>
+    <h1>Free Temporary SMS Numbers</h1>
+    <p>Use a random number to receive OTP codes online.</p>
+  </header>
 
-  <button onclick="loadSMS()">Get Latest SMS</button>
-  <div id="sms"></div>
+  <div class="container">
+    <button onclick="generateNumber()">Generate New Number</button>
+    <div class="number-box" id="phoneNumber">+1 **********</div>
+
+    <div class="messages">
+      <h3>Recent OTP Messages:</h3>
+      <div id="messageList">
+        <div class="message">+1 202-555-0173: Your OTP is <b>473829</b></div>
+        <div class="message">+44 7700-900321: Your OTP is <b>928374</b></div>
+        <div class="message">+49 1512-345678: Your OTP is <b>561029</b></div>
+      </div>
+    </div>
+  </div>
 
   <script>
-    async function loadSMS() {
-      // یہ demo API ہے (sms24.me کا public API)
-      let res = await fetch("https://sms24.me/api/msgs/380637099370");
-      let data = await res.json();
-      document.getElementById("sms").innerHTML = JSON.stringify(data);
+    const numbers = [
+      "+1 202-555-0198",
+      "+1 415-555-0132",
+      "+44 7700-900876",
+      "+49 1512-349876",
+      "+33 612-345678",
+      "+91 9876543210"
+    ];
+
+    function generateNumber() {
+      const random = Math.floor(Math.random() * numbers.length);
+      document.getElementById("phoneNumber").innerText = numbers[random];
     }
   </script>
 </body>
