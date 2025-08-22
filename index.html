@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Free Temp SMS</title>
+</head>
+<body>
+  <h1>📱 Free Temporary SMS Numbers</h1>
+  <p>نیچے والے بٹن پر کلک کریں اور مفت OTP دیکھیں 👇</p>
+
+  <button onclick="loadSMS()">Get Latest SMS</button>
+  <div id="sms"></div>
+
+  <script>
+    async function loadSMS() {
+      // یہ demo API ہے (sms24.me کا public API)
+      let res = await fetch("https://sms24.me/api/msgs/380637099370");
+      let data = await res.json();
+      document.getElementById("sms").innerHTML = JSON.stringify(data);
+    }
+  </script>
+</body>
+</html>
